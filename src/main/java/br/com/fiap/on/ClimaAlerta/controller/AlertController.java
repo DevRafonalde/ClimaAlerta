@@ -34,8 +34,8 @@ public class AlertController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Alert> deletarAlerta(@PathVariable Integer id) {
-        Alert alertaAtualizado = alertService.deletarAlerta(id);
-        return new ResponseEntity<>(alertaAtualizado, HttpStatus.OK);
+    public ResponseEntity<Boolean> deletarAlerta(@PathVariable Integer id) {
+        alertService.deletarAlerta(id);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 }

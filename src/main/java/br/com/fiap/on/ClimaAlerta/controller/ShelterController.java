@@ -34,8 +34,8 @@ public class ShelterController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Shelter> deletarShelter(@PathVariable Integer id) {
-        Shelter shelterAtualizado = shelterService.deletarShelter(id);
-        return new ResponseEntity<>(shelterAtualizado, HttpStatus.OK);
+    public ResponseEntity<Boolean> deletarShelter(@PathVariable Integer id) {
+        shelterService.deletarShelter(id);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 }
