@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS climaalerta;
 USE climaalerta;
 
-CREATE TABLE Station (
+CREATE TABLE station (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     city VARCHAR(100) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE Station (
     longitude DOUBLE NOT NULL
 );
 
-CREATE TABLE Shelter (
+CREATE TABLE shelter (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     city VARCHAR(100) NOT NULL,
@@ -17,21 +17,21 @@ CREATE TABLE Shelter (
     current_load INT NOT NULL DEFAULT 0
 );
 
-CREATE TABLE Reading (
+CREATE TABLE reading (
     id INT PRIMARY KEY AUTO_INCREMENT,
     station_id INT NOT NULL,
     rainfall_mm DOUBLE NOT NULL,
     river_level DOUBLE NOT NULL,
     humidity DOUBLE NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (station_id) REFERENCES Station(id)
+    FOREIGN KEY (station_id) REFERENCES station(id)
 );
 
-CREATE TABLE Alert (
+CREATE TABLE alert (
     id INT PRIMARY KEY AUTO_INCREMENT,
     reading_id INT NOT NULL,
     level VARCHAR(50) NOT NULL,
     message TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (reading_id) REFERENCES Reading(id)
+    FOREIGN KEY (reading_id) REFERENCES reading(id)
 );
